@@ -16,7 +16,7 @@ export class AreaChartComponent {
       {
         data: [],
       },
-    ],  
+    ],
     chart: {
       type: 'area',
       height: 800,
@@ -38,7 +38,7 @@ export class AreaChartComponent {
     this.generationService
       .getPokemonCountByGeneration()
       .subscribe((generations) => {
-        this.chartOptions.series[0].data = generations;
+        this.chart.updateSeries([{ data: generations, name:"Pokémon Count" }]);
       });
   }
 }
