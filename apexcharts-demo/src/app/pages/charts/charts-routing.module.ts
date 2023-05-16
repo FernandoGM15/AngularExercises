@@ -3,11 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { AreaChartComponent } from './components/area-chart/area-chart.component';
 import { ChartsComponent } from './charts.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ChartsComponent
+    component: ChartsComponent,
   },
   {
     path: 'line',
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'area',
     component: AreaChartComponent,
+  },
+  {
+    path: 'bar',
+    component: BarChartComponent,
   },
 ];
 
