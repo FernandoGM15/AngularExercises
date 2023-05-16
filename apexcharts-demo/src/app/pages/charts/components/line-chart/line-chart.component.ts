@@ -1,7 +1,11 @@
-
 import { Component, ViewChild } from '@angular/core';
-import { ApexAxisChartSeries, ApexChart, ApexTitleSubtitle, ApexXAxis, ChartComponent } from 'ng-apexcharts';
-import { tap } from 'rxjs';
+import {
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexTitleSubtitle,
+  ApexXAxis,
+  ChartComponent,
+} from 'ng-apexcharts';
 import { GenerationsService } from 'src/app/shared/services/generations.service';
 
 export type ChartOptions = {
@@ -11,61 +15,58 @@ export type ChartOptions = {
   title: ApexTitleSubtitle;
 };
 
-
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
-  styleUrls: ['./line-chart.component.scss']
+  styleUrls: ['./line-chart.component.scss'],
 })
 export class LineChartComponent {
-
-  @ViewChild("chart") chart!: ChartComponent;
+  @ViewChild('chart') chart!: ChartComponent;
 
   public chartOptions: ChartOptions = {
-    series: [{
-      data: []
-    }],
+    // Chart Data
+    series: [
+      {
+        data: [],
+      },
+    ],
+    // Chart Configuration
     chart: {
-      height: 350,
-      type: "line",
+      height: 800,
+      type: 'line',
       animations: {
         enabled: true,
         easing: 'linear',
         speed: 800,
         animateGradually: {
           enabled: true,
-          delay: 150
+          delay: 150,
         },
         dynamicAnimation: {
           enabled: true,
-          speed: 350
-        }
-      }
+          speed: 350,
+        },
+      },
     },
+    // Chart Title
     title: {
-      text: "My First Angular Chart"
+      text: 'My First Angular Chart',
     },
+    // Data type on x axis
     xaxis: {
-      type: "category"
-    }
+      type: 'category',
+    },
   };
 
-  constructor(
-    private generationService: GenerationsService
-  ) {
-    this.getData()
+  constructor(private generationService: GenerationsService) {
+    this.getData();
   }
 
   getData() {
-    this.generationService.getPokemonCountByGeneration()
-      .subscribe({
-        next: (resp) => {
-          console.log(resp);
-          
-          this.chartOptions.series = [
-            { data: resp }
-          ]
-        }
-      })
+    this.generationService.getPokemonCountByGeneration().subscribe({
+      next: (resp) => {
+        this.chartOptions.series = [{ data: resp, name: 'Pokemon Count' }];
+      },
+    });
   }
 }
