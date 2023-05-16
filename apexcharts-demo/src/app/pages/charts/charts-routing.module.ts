@@ -4,6 +4,7 @@ import { LineChartComponent } from './components/line-chart/line-chart.component
 import { AreaChartComponent } from './components/area-chart/area-chart.component';
 import { ChartsComponent } from './charts.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { ColumnChartComponent } from './components/column-chart/column-chart.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
     path: 'bar',
     component: BarChartComponent,
   },
+  {
+    path: 'column',
+    component:ColumnChartComponent
+  }
 ];
 
 @NgModule({

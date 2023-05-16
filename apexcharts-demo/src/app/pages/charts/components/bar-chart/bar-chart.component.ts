@@ -10,7 +10,7 @@ export class BarChartComponent {
   chartOptions: ChartOptions = {
     chart: {
       type: 'bar',
-      height: 800,
+      height: 850,
     },
     series: [
       {
