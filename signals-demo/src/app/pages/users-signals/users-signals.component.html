@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-12">
+      <h1>Users <small>With signals</small></h1>
+      <h2>users total:{{ totalUsers() }}</h2>
+    </div>
+    <hr />
+  </div>
+  <div class="row table-responsive">
+    <table class="table table-striped table-responsive">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First</th>
+          <th>Last</th>
+          <th>Email</th>
+          <th>Avatar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users()">
+          <td>{{ user.id }}</td>
+          <td>{{ user.first_name }}</td>
+          <td>{{ user.last_name }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <img [src]="user.avatar" [alt]="user.first_name + '\'s avatar'" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row d-flex justify-content-end">
+    <div class="col-4">
+      <button
+        (click)="getUsers(currentPage() + 1)"
+        class="btn btn-primary col-12"
+      >
+        Page ({{ currentPage() }})
+      </button>
+    </div>
+  </div>
+</div>
